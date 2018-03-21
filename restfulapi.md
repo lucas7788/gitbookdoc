@@ -377,7 +377,7 @@ GET
 /api/v1/transaction/:hash
 ```
 
-#### **Example usage:**
+#### Example usage:
 
 ```
 curl -i http://server:port/api/v1/transaction/c5e0d387c6a97aef12f1750840d24b53d9fe7f22f16c7b7703d4a93a28370baa
