@@ -1,13 +1,13 @@
 # Ontology Restful API
 
-* [Introduction](#introduction)
-* [errorcode](#errorcode)
+* [Introduction](#Introduction)
+* [Errorcode](#Errorcode)
 
 ## Introduction
 
 This document describes the restful api format for the http/https used in the Onchain Ontology.
 
-## error code
+## Errorcode
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
@@ -27,14 +27,12 @@ This document describes the restful api format for the http/https used in the On
 | 45001 | int64 | INTERNAL\_ERROR: internel error |
 | 47001 | int64 | SMARTCODE\_ERROR: smartcode error |
 
-### 1 Get the generate block time
-
+### 1.Get the generate block time
 ##### Get
 
 ```
 /api/v1/node/generateblocktime
 ```
-
 #### Example usage:
 
 ```
@@ -62,7 +60,6 @@ curl -i http://server:port/api/v1/node/generateblocktime
     "Version": "1.0.0"
 }
 ```
-
 ### 2 Get the number of connected node
 
 GET
@@ -98,7 +95,6 @@ curl -i http://server:port/api/v1/node/connectioncount
     "Version": "1.0.0"
 }
 ```
-
 ### 3 Get transactions by block height
 
 GET
@@ -140,7 +136,6 @@ curl -i http://server:port/api/v1/block/transactions/height/100
     "Version": "1.0.0"
 }
 ```
-
 ### 4 Get the block by block height
 
 GET
@@ -218,7 +213,6 @@ curl -i http://server:port/api/v1/block/details/height/22
     "Version": "1.0.0"
 }
 ```
-
 ### 5 Get block by blockhash
 
 GET
