@@ -62,21 +62,21 @@ Transaction field description
 | Method | Parameters | Description | Note |
 | :--- | :--- | :--- | :--- |
 | getbestblockhash |  | get the hash of the highest height block in the main chain |  |
-| getblock | <height> or <blockhash>,[verbose] | get block by block height or block height | verbose can be 0 or 1,response is different |
+| getblock | height or blockhash,[verbose] | get block by block height or block height | verbose can be 0 or 1,response is different |
 | getblockcount |  | get the number of blocks |  |
-| getblockhash | <index> | get block hash by index |  |
+| getblockhash | index | get block hash by index |  |
 | getconnectioncount |  | get the current number of connections for the node |  |
 | getrawmempool |  | Get a list of unconfirmed transactions in memory |  |
-| getrawtransaction | <transactionhash> | Returns the corresponding transaction information based on the specified hash value. |  |
-| sendrawtransaction | <hex> | Broadcast transaction. | Serialized signed transactions constructed in the program into hexadecimal strings |
-| getstorage | <script_hash> | Returns the stored value according to the contract script hashes and stored key. |  |
+| getrawtransaction | transactionhash | Returns the corresponding transaction information based on the specified hash value. |  |
+| sendrawtransaction | hex | Broadcast transaction. | Serialized signed transactions constructed in the program into hexadecimal strings |
+| getstorage | script_hash | Returns the stored value according to the contract script hashes and stored key. |  |
 | getversion |  | Get the version information of the query node |  |
 | getblocksysfee |  | According to the specified index, return the system fee before the block. |  |
-| getcontractstate | <script_hash> | According to the contract script hash, query the contract information. |  |
-| getmempooltxstate | <tx_hash> | Query the transaction status in the memory pool. |  |
+| getcontractstate | script_hash | According to the contract script hash, query the contract information. |  |
+| getmempooltxstate | tx_hash | Query the transaction status in the memory pool. |  |
 | getsmartcodeevent |  | Get smartcode event |  |
-| getblockheightbytxhash | <tx_hash> | return balance of base58 account address. |  |
-| getbalance | <address> | return balance of base58 account address. |  |
+| getblockheightbytxhash | tx_hash | return balance of base58 account address. |  |
+| getbalance | address | return balance of base58 account address. |  |
 
 
 ### 1. getbestblockhash
