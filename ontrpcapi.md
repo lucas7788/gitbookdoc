@@ -60,13 +60,13 @@ Transaction field description
 ## Rpc api list
 
 | Method | Parameters | Description | Note |
-| :--- | :--- | :--- | :--- |
+| :---| :---| :---| :---|
 | getbestblockhash |  | get the hash of the highest height block in the main chain |  |
-| getblock | height or blockhash,[verbose] | get block by block height or block height | verbose can be 0 or 1,response is different |
+| getblock | height or blockhash,[verbose] | get block by block height or block hash | verbose can be 0 or 1,response is different |
 | getblockcount |  | get the number of blocks |  |
-| getblockhash | index | get block hash by index |  |
-| getconnectioncount |  | get the current number of connections for the node |  |
-| getrawmempool |  | Get a list of unconfirmed transactions in memory |  |
+| getblockhash | height | get block hash by block height |  |
+| getconnectioncount|  | get the current number of connections for the node |  |
+| getgenerateblocktime|  | The time required to create a new block |  |
 | getrawtransaction | transactionhash | Returns the corresponding transaction information based on the specified hash value. |  |
 | sendrawtransaction | hex | Broadcast transaction. | Serialized signed transactions constructed in the program into hexadecimal strings |
 | getstorage | script_hash | Returns the stored value according to the contract script hashes and stored key. |  |
@@ -75,7 +75,7 @@ Transaction field description
 | getcontractstate | script_hash | According to the contract script hash, query the contract information. |  |
 | getmempooltxstate | tx_hash | Query the transaction status in the memory pool. |  |
 | getsmartcodeevent |  | Get smartcode event |  |
-| getblockheightbytxhash | tx_hash | return balance of base58 account address. |  |
+| getblockheightbytxhash | tx_hash | get blockheight of txhash|  |
 | getbalance | address | return balance of base58 account address. |  |
 
 
@@ -504,6 +504,7 @@ Response:
     "result": "4c696e"
 }
 ```
+> result: Hexadecimal string
 
 #### 10. getversion
 
@@ -709,39 +710,6 @@ Response:
 }
 ```
 
-#### 15. getsmartcodeevent
-
-Get smartcontract event.
-
-#### Parameter instruction
-
-Height: block height.
-
-#### Example
-
-Request:
-
-```
-{
-  "jsonrpc": "2.0",
-  "method": "getsmartcodeevent",
-  "params": [101],
-  "id": 1
-}
-```
-
-Response:
-
-```
-{
-    "desc":"SUCCESS",
-    "error":0,
-    "jsonrpc": "2.0",
-    "id": 1,
-    "result": {
-    }
-}
-```
 #### 15. getblockheightbytxhash
 get blockheight by txhash
 #### Parameter instruction
@@ -753,9 +721,20 @@ Request:
 ```
 {
   "jsonrpc": "2.0",
-  "method": "getblocksysfee",
-  "params": ["TA5uYzLU2vBvvfCMxyV2sdzc9kPqJzGZWq"],
+  "method": "getblockheightbytxhash",
+  "params": ["c453557af780fe403db6e954ebc9adeafd5818c596c6c60e5cc42851c5b41884"],
   "id": 1
+}
+```
+
+Response:
+```
+{
+    "desc": "SUCCESS",
+    "error": 0,
+    "id": 1,
+    "jsonpc": "2.0",
+    "result": 10
 }
 ```
 
@@ -774,7 +753,7 @@ Request:
 ```
 {
   "jsonrpc": "2.0",
-  "method": "getblocksysfee",
+  "method": "getbalance",
   "params": ["TA5uYzLU2vBvvfCMxyV2sdzc9kPqJzGZWq"],
   "id": 1
 }
@@ -794,10 +773,6 @@ Response:
        }
 }
 ```
-
-Response instruction:
-
-Result: The system fee before the block and the unit is OntGas.
 
 ## Error code
 
