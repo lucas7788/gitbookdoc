@@ -9,9 +9,22 @@
 This document describes the restful api format for the http/https used in the Onchain Ontology.
 
 ## Restful API list
+
+### Response参数说明
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| Action | string | action name |
+| Desc | string | description |
+| Error | int64 | error code |
+| Result | int/string/object | execute result |
+| Version | string | version information |
+
 ### 1.Get the generate block time
 return the time required to create a new block
+
 ##### Get
+
 ```
 /api/v1/node/generateblocktime
 ```
@@ -20,16 +33,6 @@ return the time required to create a new block
 ```
 curl -i http://server:port/api/v1/node/generateblocktime
 ```
-
-#### Respone
-
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| Action | string | action name |
-| Desc | string | description |
-| Error | int64 | error code |
-| Result | int | execute result |
-| Version | string | version information |
 
 #### Response example
 
@@ -56,16 +59,6 @@ GET
 curl -i http://server:port/api/v1/node/connectioncount
 ```
 
-#### Respone
-
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| Action | string | action name |
-| Desc | string | description information |
-| Error | int64 | error code |
-| Result | uint | program execution result |
-| Version | string | version information |
-
 #### Response example
 
 ```
@@ -90,16 +83,6 @@ GET
 ```
 curl -i http://server:port/api/v1/block/transactions/height/100
 ```
-
-#### Respone
-
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| Action | string | action name |
-| Desc | string | description |
-| Error | int64 | error code |
-| Result | object | program execution result |
-| Version | string | version information |
 
 #### Response example
 
@@ -131,16 +114,6 @@ GET
 ```
 curl -i http://server:port/api/v1/block/details/height/22
 ```
-
-#### Respone
-
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| Action | string | action name |
-| Desc | string | description |
-| Error | int64 | error code |
-| Result | object | program execution result |
-| Version | string | version information |
 
 #### Response example
 
@@ -208,16 +181,6 @@ GET
 ```
 curl -i http://server:port/api/v1/block/details/hash/8723534588ea3202c0949ce5e39876cfcec83f3e9a3ed20168133714944d1227
 ```
-
-#### Respone
-
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| Action | string | action name |
-| Desc | string | description |
-| Error | int64 | error code |
-| Result | object | program execution result |
-| Version | string | version information |
 
 #### Response example
 
@@ -323,16 +286,6 @@ GET
 curl -i http://server:port/api/v1/block/hash/100
 ```
 
-#### Respone
-
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| Action | string | action name |
-| Desc | string | description |
-| Error | int64 | error code |
-| Result | string | program execution result |
-| Version | string | version information |
-
 #### Response example
 
 ```
@@ -358,16 +311,6 @@ GET
 ```
 curl -i http://server:port/api/v1/transaction/c5e0d387c6a97aef12f1750840d24b53d9fe7f22f16c7b7703d4a93a28370baa
 ```
-
-#### Response
-
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| Action | string | action name |
-| Desc | string | description |
-| Error | int64 | error code |
-| Result | object | program execution result |
-
 #### Response example
 
 ```
