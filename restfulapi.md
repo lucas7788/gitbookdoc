@@ -1,31 +1,14 @@
 # Ontology Restful API
 
 * [Introduction](#Introduction)
+* [Restful API list](#Restful API list)
 * [Errorcode](#Errorcode)
 
 ## Introduction
 
 This document describes the restful api format for the http/https used in the Onchain Ontology.
 
-## Errorcode
-
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| 0 | int64 | SUCCESS |
-| 41001 | int64 | SESSION\_EXPIRED: invalided or expired session |
-| 41002 | int64 | SERVICE\_CEILING: reach service limit |
-| 41003 | int64 | ILLEGAL\_DATAFORMAT: illegal dataformat |
-| 41004 | int64 | INVALID\_VERSION: invalid version |
-| 42001 | int64 | INVALID\_METHOD: invalid method |
-| 42002 | int64 | INVALID\_PARAMS: invalid params |
-| 43001 | int64 | INVALID\_TRANSACTION: invalid transaction |
-| 43002 | int64 | INVALID\_ASSET: invalid asset |
-| 43003 | int64 | INVALID\_BLOCK: invalid block |
-| 44001 | int64 | UNKNOWN\_TRANSACTION: unknown transaction |
-| 44002 | int64 | UNKNOWN\_ASSET: unknown asset |
-| 44003 | int64 | UNKNOWN\_BLOCK: unknown block |
-| 45001 | int64 | INTERNAL\_ERROR: internel error |
-| 47001 | int64 | SMARTCODE\_ERROR: smartcode error |
+## Restful API list
 
 ### 1.Get the generate block time
 ##### Get
@@ -363,7 +346,7 @@ curl -i http://server:port/api/v1/block/hash/100
 }
 ```
 
-### 8 get transaction by transaction hash（unsolved）
+### 8 get transaction by transaction hash
 
 GET
 
@@ -398,17 +381,23 @@ curl -i http://server:port/api/v1/transaction/c5e0d387c6a97aef12f1750840d24b53d9
         "Nonce": 0,
         "TxType": 0,
         "Payload": {
-            "Nonce": 1521531787756094000,
-            "Issuer": {
-                "X": "",
-                "Y": ""
-            }
+            "Nonce": 1522029014774111000
         },
         "Attributes": [],
-        "Fee": null,
+        "Fee": [],
         "NetworkFee": 0,
-        "Sigs": null,
-        "Hash": "c5e0d387c6a97aef12f1750840d24b53d9fe7f22f16c7b7703d4a93a28370baa"
+        "Sigs": [
+            {
+                "PubKeys": [
+                    "02186b95cf941d4ac5340f83431402bf32c7642fd6bd852a7a13f2488d72e8f487"
+                ],
+                "M": 1,
+                "SigData": [
+                    "97168d2613919ac877e26efd7fa2451dc3c0089f16a4d16f3f00f67e5b18392b3e9fe8d465ecc3fbc38bdcd71deeaeeec72955f2c8514b1ed6767946c433755b"
+                ]
+            }
+        ],
+        "Hash": "c453557af780fe403db6e954ebc9adeafd5818c596c6c60e5cc42851c5b41884"
     },
     "Version": "1.0.0"
 }
@@ -446,17 +435,82 @@ curl  -H "Content-Type: application/json"  -X POST -d '{}'  http://server:port/a
 | Version | string | version information |
 | Data | string | transaction data |
 
-### 10 get ong（unsolved）
-
-#### claim ong
-
-POST
-
+#### Response
 ```
-/api/v1/claim
+{
+    "Action": "sendrawtransaction",
+    "Desc": "SUCCESS",
+    "Error": 0,
+    "Result": "22471ab3f4b4307a99f00c9a717dbf8b26f5bf63bf47f9c560477da8181de777",
+    "Version": "1.0.0"
+}
+```
+> Result: txhash
+
+### 10 getStorage
+
+GET
+```
+/api/v1/storage/:hash/:key
+```
+Request Example
+```
+curl -i http://localhost:20384/api/v1/storage/ff00000000000000000000000000000000000001/0144587c1094f6929ed7362d6328cffff4fb4da2
+```
+Response
+```
+{
+    "Action": "getstorage",
+    "Desc": "SUCCESS",
+    "Error": 0,
+    "Result": "58d15e17628000",
+    "Version": "1.0.0"
+}
 ```
 
-### 11 get contract（unsolved）
+### 11 GetBalanceByAddr
+GET
+```
+/api/v1/balance/:addr
+```
+Request Example
+```
+curl -i http://localhost:20384/api/v1/balance/TA5uYzLU2vBvvfCMxyV2sdzc9kPqJzGZWq
+```
+Response
+```
+{
+    "Action": "getbalance",
+    "Desc": "SUCCESS",
+    "Error": 0,
+    "Result": {
+        "ont": "25000000000000000",
+        "ong": "0"
+    },
+    "Version": "1.0.0"
+}
+```
+### 12 Api_Restart
+GET
+```
+/api/v1/restart
+```
+Request Example
+```
+curl -i http://localhost:20384/api/v1/restart
+```
+
+Response
+```
+{
+    "Action": "restart",
+    "Desc": "SUCCESS",
+    "Error": 0,
+    "Result": "",
+    "Version": "1.0.0"
+}
+```
+### 13 get contractstate
 
 GET
 
@@ -470,21 +524,69 @@ Example
 curl -i http://server:port/api/v1/block/details/hash/:hash
 ```
 
-#### 12 get contract event by height（unsolved）
+#### 14 get contract event by height（unsolved）
 
 GET
 
 ```
-/api/v1/smartcontract/event/:height
+/api/v1/smartcode/event/height/:height
 ```
 
 #### Example usage:
 
 ```
-curl -i http://server:port/api/v1/smartcontract/event/:height
+curl -i http://localhost:20384/api/v1/smartcode/event/height/900
 ```
 
-### 13 websocket configuration（unsolved）
+response
+```
+{
+    "Action": "getsmartcodeeventbyheight",
+    "Desc": "SUCCESS",
+    "Error": 0,
+    "Result": null,
+    "Version": "1.0.0"
+}
+```
+### 15
+GET
+```
+/api/v1/smartcode/event/txhash/:hash
+```
+Request Example
+```
+curl -i http://localhost:20384/api/v1/smartcode/event/txhash/3e23cf222a47739d4141255da617cd42925a12638ac19cadcc85501f907972c8
+```
+Response
+```
+{
+    "Action": "getsmartcodeeventbyhash",
+    "Desc": "SUCCESS",
+    "Error": 0,
+    "Result": null,
+    "Version": "1.0.0"
+}
+```
+### 16 Api_GetBlkHeightByTxHash
+GET
+```
+/api/v1/block/height/txhash/:hash
+```
+Example
+```
+curl -i http://localhost:20384/api/v1/block/height/txhash/3e23cf222a47739d4141255da617cd42925a12638ac19cadcc85501f907972c8
+```
+Response
+```
+{
+    "Action": "getblockheightbytxhash",
+    "Desc": "SUCCESS",
+    "Error": 0,
+    "Result": 0,
+    "Version": "1.0.0"
+}
+```
+### 17 websocket configuration（unsolved）
 
 POST
 
@@ -497,3 +599,23 @@ POST
 ```
 curl -i http://server:port/api/v1/config/websocket/state
 ```
+
+## Errorcode
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| 0 | int64 | SUCCESS |
+| 41001 | int64 | SESSION\_EXPIRED: invalided or expired session |
+| 41002 | int64 | SERVICE\_CEILING: reach service limit |
+| 41003 | int64 | ILLEGAL\_DATAFORMAT: illegal dataformat |
+| 41004 | int64 | INVALID\_VERSION: invalid version |
+| 42001 | int64 | INVALID\_METHOD: invalid method |
+| 42002 | int64 | INVALID\_PARAMS: invalid params |
+| 43001 | int64 | INVALID\_TRANSACTION: invalid transaction |
+| 43002 | int64 | INVALID\_ASSET: invalid asset |
+| 43003 | int64 | INVALID\_BLOCK: invalid block |
+| 44001 | int64 | UNKNOWN\_TRANSACTION: unknown transaction |
+| 44002 | int64 | UNKNOWN\_ASSET: unknown asset |
+| 44003 | int64 | UNKNOWN\_BLOCK: unknown block |
+| 45001 | int64 | INTERNAL\_ERROR: internel error |
+| 47001 | int64 | SMARTCODE\_ERROR: smartcode error |
