@@ -23,7 +23,7 @@ This document describes the restful api format for the http/https used in the On
 ### 1. Get the generate block time
 return the time required to create a new block
 
-##### Get
+##### GET
 
 ```
 /api/v1/node/generateblocktime
@@ -74,7 +74,7 @@ curl -i http://server:port/api/v1/node/connectioncount
 ```
 ### 3 Get transactions by block height
 
-Return all transaction hash contained in the block corresponding to this height
+return all transaction hash contained in the block corresponding to this height
 
 GET
 
@@ -107,7 +107,7 @@ curl -i http://server:port/api/v1/block/transactions/height/100
 ```
 ### 4 Get the block by block height
 
-Return block details based on block height
+return block details based on block height
 
 GET
 
@@ -176,7 +176,7 @@ curl -i http://server:port/api/v1/block/details/height/22
 ```
 ### 5 Get block by blockhash
 
-Return block details based on block hash
+return block details based on block hash
 
 GET
 
@@ -275,7 +275,7 @@ curl -i http://server:port/api/v1/block/height
 
 ### 7 Get blockhash by block height
 
-Return block hash based on block height
+return block hash based on block height
 
 GET
 
@@ -303,7 +303,7 @@ curl -i http://server:port/api/v1/block/hash/100
 
 ### 8 get transaction by transaction hash
 
-Get transaction details based on transaction hash
+get transaction details based on transaction hash
 
 GET
 
@@ -473,7 +473,28 @@ GET
 #### Request Example:
 
 ```
-curl -i http://server:port/api/v1/block/details/hash/ff00000000000000000000000000000000000001
+curl -i http://server:port/api/v1/block/details/hash/fff49c809d302a2956e9dc0012619a452d4b846c
+```
+
+#### Response Example:
+
+```
+{
+    "desc": "SUCCESS",
+    "error": 0,
+    "id": 1,
+    "jsonpc": "2.0",
+    "result": {
+        "VmType": 255,
+        "Code": "4f4e5420546f6b656e",
+        "NeedStorage": true,
+        "Name": "ONT",
+        "CodeVersion": "1.0",
+        "Author": "Ontology Team",
+        "Email": "contact@ont.io",
+        "Description": "Ontology Network ONT Token"
+    }
+}
 ```
 
 #### 14 get contract event by height（unsolved）
