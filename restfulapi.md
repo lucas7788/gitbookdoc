@@ -20,7 +20,7 @@ This document describes the restful api format for the http/https used in the On
 | Result | int/string/object | execute result |
 | Version | string | version information |
 
-### 1.Get the generate block time
+### 1. Get the generate block time
 return the time required to create a new block
 
 ##### Get
@@ -28,13 +28,13 @@ return the time required to create a new block
 ```
 /api/v1/node/generateblocktime
 ```
-#### Example usage:
+#### Request Example:
 
 ```
 curl -i http://server:port/api/v1/node/generateblocktime
 ```
 
-#### Response example
+#### Response example:
 
 ```
 {
@@ -53,13 +53,13 @@ GET
 /api/v1/node/connectioncount
 ```
 
-#### Example usage:
+#### Request Example:
 
 ```
 curl -i http://server:port/api/v1/node/connectioncount
 ```
 
-#### Response example
+#### Response Example:
 
 ```
 {
@@ -78,13 +78,13 @@ GET
 /api/v1/block/transactions/height/:height
 ```
 
-#### Example usage:
+#### Request Example:
 
 ```
 curl -i http://server:port/api/v1/block/transactions/height/100
 ```
 
-#### Response example
+#### Response Example:
 
 ```
 {
@@ -109,13 +109,13 @@ GET
 /api/v1/block/details/height/:height
 ```
 
-####Example usage:
+#### Request Example:
 
 ```
 curl -i http://server:port/api/v1/block/details/height/22
 ```
 
-#### Response example
+#### Response Example:
 
 ```
 {
@@ -176,13 +176,13 @@ GET
 /api/v1/block/details/hash/:hash
 ```
 
-#### Example usage:
+#### Request Example:
 
 ```
 curl -i http://server:port/api/v1/block/details/hash/8723534588ea3202c0949ce5e39876cfcec83f3e9a3ed20168133714944d1227
 ```
 
-#### Response example
+#### Response Example:
 
 ```
 {
@@ -244,23 +244,14 @@ GET
 /api/v1/block/height
 ```
 
-#### Example usage:
+#### Request Example:
 
 ```
 curl -i http://server:port/api/v1/block/height
 ```
 
-#### Respone
 
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| Action | string | action name |
-| Desc | string | description |
-| Error | int64 | error code |
-| Result | uint32 | program execution result |
-| Version | string | version information |
-
-#### Response example
+#### Response Example:
 
 ```
 {
@@ -280,13 +271,13 @@ GET
 /api/v1/block/hash/:height
 ```
 
-#### Example usage:
+#### Request Example:
 
 ```
 curl -i http://server:port/api/v1/block/hash/100
 ```
 
-#### Response example
+#### Response Example:
 
 ```
 {
@@ -306,12 +297,12 @@ GET
 /api/v1/transaction/:hash
 ```
 
-#### Example usage:
+####Request Example:
 
 ```
 curl -i http://server:port/api/v1/transaction/c5e0d387c6a97aef12f1750840d24b53d9fe7f22f16c7b7703d4a93a28370baa
 ```
-#### Response example
+#### Response Example:
 
 ```
 {
@@ -391,6 +382,8 @@ curl  -H "Content-Type: application/json"  -X POST -d '{}'  http://server:port/a
 
 ### 10 getStorage
 
+Returns the stored value according to the contract script hashes and stored key.
+
 GET
 ```
 /api/v1/storage/:hash/:key
@@ -412,6 +405,9 @@ curl -i http://localhost:20384/api/v1/storage/ff00000000000000000000000000000000
 > Result:Returns the stored value according to the contract script hashes and stored key.
 
 ### 11 GetBalanceByAddr
+
+return balance of base58 account address.
+
 GET
 ```
 /api/v1/balance/:addr
@@ -458,6 +454,8 @@ curl -i http://localhost:20384/api/v1/restart
 ```
 ### 13 get contractstate
 
+According to the contract script hash, query the contract information.
+
 GET
 
 ```
@@ -499,11 +497,11 @@ GET
 ```
 /api/v1/smartcode/event/txhash/:hash
 ```
-#### Request Example
+#### Request Example:
 ```
 curl -i http://localhost:20384/api/v1/smartcode/event/txhash/3e23cf222a47739d4141255da617cd42925a12638ac19cadcc85501f907972c8
 ```
-#### Response
+#### Response:
 ```
 {
     "Action": "getsmartcodeeventbyhash",
@@ -514,11 +512,13 @@ curl -i http://localhost:20384/api/v1/smartcode/event/txhash/3e23cf222a47739d414
 }
 ```
 ### 16 Api_GetBlkHeightByTxHash
+get blockheight of txhash
+
 GET
 ```
 /api/v1/block/height/txhash/:hash
 ```
-#### Request Example
+#### Request Example:
 ```
 curl -i http://localhost:20384/api/v1/block/height/txhash/3e23cf222a47739d4141255da617cd42925a12638ac19cadcc85501f907972c8
 ```
