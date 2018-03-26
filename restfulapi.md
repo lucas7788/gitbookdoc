@@ -9,10 +9,9 @@
 This document describes the restful api format for the http/https used in the Onchain Ontology.
 
 ## Restful API list
-
 ### 1.Get the generate block time
+return the time required to create a new block
 ##### Get
-
 ```
 /api/v1/node/generateblocktime
 ```
@@ -457,7 +456,7 @@ Request Example
 ```
 curl -i http://localhost:20384/api/v1/storage/ff00000000000000000000000000000000000001/0144587c1094f6929ed7362d6328cffff4fb4da2
 ```
-Response
+#### Response
 ```
 {
     "Action": "getstorage",
@@ -467,17 +466,21 @@ Response
     "Version": "1.0.0"
 }
 ```
+> Result:Returns the stored value according to the contract script hashes and stored key.
 
 ### 11 GetBalanceByAddr
 GET
 ```
 /api/v1/balance/:addr
 ```
+> addr: Base58 encoded account address
+
 Request Example
 ```
 curl -i http://localhost:20384/api/v1/balance/TA5uYzLU2vBvvfCMxyV2sdzc9kPqJzGZWq
 ```
-Response
+
+#### Response
 ```
 {
     "Action": "getbalance",
@@ -495,12 +498,12 @@ GET
 ```
 /api/v1/restart
 ```
-Request Example
+#### Request Example
 ```
 curl -i http://localhost:20384/api/v1/restart
 ```
 
-Response
+#### Response
 ```
 {
     "Action": "restart",
@@ -518,10 +521,10 @@ GET
 /api/v1/contract/:hash
 ```
 
-Example
+#### Request Example
 
 ```
-curl -i http://server:port/api/v1/block/details/hash/:hash
+curl -i http://server:port/api/v1/block/details/hash/ff00000000000000000000000000000000000001
 ```
 
 #### 14 get contract event by height（unsolved）
@@ -538,7 +541,7 @@ GET
 curl -i http://localhost:20384/api/v1/smartcode/event/height/900
 ```
 
-response
+#### response
 ```
 {
     "Action": "getsmartcodeeventbyheight",
@@ -553,11 +556,11 @@ GET
 ```
 /api/v1/smartcode/event/txhash/:hash
 ```
-Request Example
+#### Request Example
 ```
 curl -i http://localhost:20384/api/v1/smartcode/event/txhash/3e23cf222a47739d4141255da617cd42925a12638ac19cadcc85501f907972c8
 ```
-Response
+#### Response
 ```
 {
     "Action": "getsmartcodeeventbyhash",
@@ -572,11 +575,11 @@ GET
 ```
 /api/v1/block/height/txhash/:hash
 ```
-Example
+#### Request Example
 ```
 curl -i http://localhost:20384/api/v1/block/height/txhash/3e23cf222a47739d4141255da617cd42925a12638ac19cadcc85501f907972c8
 ```
-Response
+#### Response
 ```
 {
     "Action": "getblockheightbytxhash",
@@ -594,7 +597,7 @@ POST
 /api/v1/config/websocket/state
 ```
 
-#### Example usage:
+#### Request Example
 
 ```
 curl -i http://server:port/api/v1/config/websocket/state

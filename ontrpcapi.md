@@ -9,7 +9,7 @@
 Request parameter description:
 
 | Field | Type | Description |
-| :--- | :--- | :--- |
+| :---| :---| :---|
 | jsonrpc | string | jsonrpc version |
 | method | string | method name |
 | params | string | method required parameters |
@@ -18,7 +18,7 @@ Request parameter description:
 Response parameter description:
 
 | Field | Type | Description |
-| :--- | :--- | :--- |
+| :---| :---| :---|
 | desc| string | resopnse description |
 | error | int64 | error code |
 | jsonrpc | string | jsonrpc version |
