@@ -522,6 +522,7 @@ curl -i http://localhost:20384/api/v1/smartcode/event/height/900
 }
 ```
 ### 15
+
 GET
 ```
 /api/v1/smartcode/event/txhash/:hash
