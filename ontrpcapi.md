@@ -31,31 +31,39 @@ Block field description
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
-| Version | int | version number |
-| PrevBlock | UInt256 | The hash of the previous block |
-| TransactionsRoot | UInt256 | The root of the Merkle tree for all transactions in this block |
-| BlockRoot | UInt256 | blockroot |
+| Header | *Header |  |
+| Transactions | []*Transaction ||
+| hash | *Uint256 | |
+
+Header field description
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| Version | uint32 | version number |
+| PrevBlockHash | Uint256 | The hash of the previous block |
+| TransactionsRoot | Uint256 | The root of the Merkle tree for all transactions in this block |
+| BlockRoot | Uint256 | blockroot |
 | Timestamp | int | block timestamp,uinix timestamp |
 | Height | int | block height |
-| NextBookKeeper | UInt160 | Accounting contract hash value for the next block |
-| BookKeepers |  ||
-| SigData |||
-| Hash | Program | Script to verify the block |
-| Transactions | Transaction[] | List of transactions in this block |
+| ConsensusData | uint64 |  |
+| NextBookKeeper | Address | Accounting contract hash value for the next block |
+| BookKeepers | []*crypto.PubKey ||
+| SigData | [][]byte ||
+| Hash | Uint256 | Script to verify the block |
 
 Transaction field description
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
-| Version| int | version number |
+| Version| byte | version number |
 | TxType | TransactionType | transaction type |
 | Payload | Payload | payload |
-| Nounce | int | random number |
-| Attributes | Transactions |  |
-| Fee | Fee[] | transaction fees  |
-| NetworkFee | long | neitwork fees |
-| Sigs | Sign[] | signature array |
-| Hash | string | transaction hash |
+| Nonce | uint32 | random number |
+| Attributes | []*TxAttribute |  |
+| Fee | []*Fee | transaction fees  |
+| NetworkFee | Fixed64 | neitwork fees |
+| Sigs | []*Sig | signature array |
+| Hash | *Uint256 | transaction hash |
 
 ## Rpc api list
 

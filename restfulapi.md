@@ -497,7 +497,7 @@ curl -i http://server:port/api/v1/block/details/hash/fff49c809d302a2956e9dc00126
 }
 ```
 
-#### 14 get contract event by height（unsolved）
+#### 14 get contract event by height
 
 GET
 
@@ -521,7 +521,7 @@ curl -i http://localhost:20384/api/v1/smartcode/event/height/900
     "Version": "1.0.0"
 }
 ```
-### 15
+### 15 get contract event by txhash
 
 GET
 ```
