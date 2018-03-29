@@ -502,7 +502,7 @@ curl -i http://server:port/api/v1/block/details/hash/fff49c809d302a2956e9dc00126
 GET
 
 ```
-/api/v1/smartcode/event/height/:height
+/api/v1/smartcode/event/transactions/:height
 ```
 
 #### Example usage:
@@ -517,10 +517,14 @@ curl -i http://localhost:20384/api/v1/smartcode/event/height/900
     "Action": "getsmartcodeeventbyheight",
     "Desc": "SUCCESS",
     "Error": 0,
-    "Result": null,
+    "Result": [
+        "592d83c739d9d167b74b385161fee09bfe820eae5bc4a69411f8e00f4847b833"
+    ],
     "Version": "1.0.0"
 }
 ```
+> Note: result is the txHash.
+
 ### 15 get contract event by txhash
 
 GET
@@ -534,11 +538,118 @@ curl -i http://localhost:20384/api/v1/smartcode/event/txhash/3e23cf222a47739d414
 #### Response:
 ```
 {
-    "Action": "getsmartcodeeventbyhash",
-    "Desc": "SUCCESS",
-    "Error": 0,
-    "Result": null,
-    "Version": "1.0.0"
+    "desc": "SUCCESS",
+    "error": 0,
+    "id": 1,
+    "jsonpc": "2.0",
+    "result": [
+        {
+            "CodeHash": [
+                255,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                1
+            ],
+            "States": [
+                "transfer",
+                [
+                    1,
+                    244,
+                    149,
+                    61,
+                    108,
+                    40,
+                    239,
+                    222,
+                    202,
+                    110,
+                    207,
+                    9,
+                    30,
+                    145,
+                    251,
+                    12,
+                    243,
+                    231,
+                    143,
+                    25
+                ],
+                [
+                    1,
+                    211,
+                    140,
+                    123,
+                    200,
+                    98,
+                    120,
+                    251,
+                    191,
+                    70,
+                    26,
+                    255,
+                    222,
+                    168,
+                    211,
+                    95,
+                    153,
+                    188,
+                    122,
+                    84
+                ],
+                100
+            ],
+            "TxHash": [
+                89,
+                45,
+                131,
+                199,
+                57,
+                217,
+                209,
+                103,
+                183,
+                75,
+                56,
+                81,
+                97,
+                254,
+                224,
+                155,
+                254,
+                130,
+                14,
+                174,
+                91,
+                196,
+                166,
+                148,
+                17,
+                248,
+                224,
+                15,
+                72,
+                71,
+                184,
+                51
+            ]
+        }
+    ]
 }
 ```
 ### 16 Api_GetBlkHeightByTxHash
