@@ -10,7 +10,7 @@ This document describes the restful api format for the http/https used in the On
 
 ## Restful API list
 
-### Response parameters description
+### Response parameters descri
 
 | Field | Type | Description |
 | :--- | :--- | :--- |
@@ -367,7 +367,7 @@ POST
 #### Request Example:
 
 ```
-curl  -H "Content-Type: application/json"  -X POST -d '{}'  http://server:port/api/v1/transaction
+curl  -H "Content-Type: application/json"  -X POST -d '{"Action":"sendrawtransaction", "Version":"1.0.0","Data":"00d00000000080fdcf2b0138c56b6c766b00527ac46c766b51527ac46151c56c766b52527ac46c766b00c31052656749644279507..."}'  http://server:port/api/v1/transaction
 ```
 
 #### Post Params:
